@@ -1,5 +1,9 @@
+import 'package:dance_of_india/HomePage.dart';
+import 'package:dance_of_india/Navigation%20Drawer.dart';
+import 'package:dance_of_india/Utils/ThemeProvider.dart';
 import 'package:dance_of_india/main.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -40,8 +44,9 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-
+    final themeNotifier = Provider.of<ThemeProvider>(context);
     return Scaffold(
+
       body: SafeArea(
         child: Center(
           child: AnimatedBuilder(
@@ -80,13 +85,13 @@ class _SplashScreenState extends State<SplashScreen>
                             style: Theme.of(context)
                                 .textTheme
                                 .headline1
-                                .copyWith(color: Color(0xFF000080), fontSize: 35)),
+                                .copyWith(color: themeNotifier.darkTheme ? Colors.white : Color(0xFF000080), fontSize: 35)),
                         TextSpan(
                             text: "India",
                             style: Theme.of(context)
                                 .textTheme
                                 .headline1
-                                .copyWith(color: Color(0xFF138808), fontSize: 35)),
+                                .copyWith(color:  Color(0xFF138808), fontSize: 35)),
                       ]),
                     ),
                   ),
@@ -98,9 +103,9 @@ class _SplashScreenState extends State<SplashScreen>
                       child: Text(
                         "Feel the Rythem",
                         style: Theme.of(context).textTheme.headline1.copyWith(
-                            color: Colors.redAccent,
+                            color: themeNotifier.darkTheme ? Colors.white : Colors.redAccent,
                             fontFamily: "Allura",
-                            fontSize: 35,
+                            fontSize: 40,
                             letterSpacing: 1.5),
                       ),
                     ),
