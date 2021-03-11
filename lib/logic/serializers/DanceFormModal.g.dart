@@ -20,6 +20,9 @@ class _$DanceFormModalSerializer
   Iterable<Object> serialize(Serializers serializers, DanceFormModal object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
+      'poster',
+      serializers.serialize(object.poster,
+          specifiedType: const FullType(String)),
       'danceName',
       serializers.serialize(object.danceName,
           specifiedType: const FullType(String)),
@@ -59,6 +62,10 @@ class _$DanceFormModalSerializer
       iterator.moveNext();
       final Object value = iterator.current;
       switch (key) {
+        case 'poster':
+          result.poster = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'danceName':
           result.danceName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -98,6 +105,8 @@ class _$DanceFormModalSerializer
 
 class _$DanceFormModal extends DanceFormModal {
   @override
+  final String poster;
+  @override
   final String danceName;
   @override
   final String origin;
@@ -116,7 +125,8 @@ class _$DanceFormModal extends DanceFormModal {
       (new DanceFormModalBuilder()..update(updates)).build();
 
   _$DanceFormModal._(
-      {this.danceName,
+      {this.poster,
+      this.danceName,
       this.origin,
       this.description,
       this.infoParagraph1,
@@ -124,6 +134,7 @@ class _$DanceFormModal extends DanceFormModal {
       this.wikiLink,
       this.imgList})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(poster, 'DanceFormModal', 'poster');
     BuiltValueNullFieldError.checkNotNull(
         danceName, 'DanceFormModal', 'danceName');
     BuiltValueNullFieldError.checkNotNull(origin, 'DanceFormModal', 'origin');
@@ -150,6 +161,7 @@ class _$DanceFormModal extends DanceFormModal {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is DanceFormModal &&
+        poster == other.poster &&
         danceName == other.danceName &&
         origin == other.origin &&
         description == other.description &&
@@ -165,7 +177,9 @@ class _$DanceFormModal extends DanceFormModal {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, danceName.hashCode), origin.hashCode),
+                    $jc(
+                        $jc($jc($jc(0, poster.hashCode), danceName.hashCode),
+                            origin.hashCode),
                         description.hashCode),
                     infoParagraph1.hashCode),
                 infoParagraph2.hashCode),
@@ -176,6 +190,7 @@ class _$DanceFormModal extends DanceFormModal {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('DanceFormModal')
+          ..add('poster', poster)
           ..add('danceName', danceName)
           ..add('origin', origin)
           ..add('description', description)
@@ -190,6 +205,10 @@ class _$DanceFormModal extends DanceFormModal {
 class DanceFormModalBuilder
     implements Builder<DanceFormModal, DanceFormModalBuilder> {
   _$DanceFormModal _$v;
+
+  String _poster;
+  String get poster => _$this._poster;
+  set poster(String poster) => _$this._poster = poster;
 
   String _danceName;
   String get danceName => _$this._danceName;
@@ -227,6 +246,7 @@ class DanceFormModalBuilder
   DanceFormModalBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _poster = $v.poster;
       _danceName = $v.danceName;
       _origin = $v.origin;
       _description = $v.description;
@@ -256,6 +276,8 @@ class DanceFormModalBuilder
     try {
       _$result = _$v ??
           new _$DanceFormModal._(
+              poster: BuiltValueNullFieldError.checkNotNull(
+                  poster, 'DanceFormModal', 'poster'),
               danceName: BuiltValueNullFieldError.checkNotNull(
                   danceName, 'DanceFormModal', 'danceName'),
               origin: BuiltValueNullFieldError.checkNotNull(

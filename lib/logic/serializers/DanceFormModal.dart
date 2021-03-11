@@ -8,6 +8,7 @@ part 'DanceFormModal.g.dart';
 abstract class DanceFormModal implements Built<DanceFormModal, DanceFormModalBuilder> {
 
 
+  String get poster;
   String get danceName;
   String get origin;
   String get description;

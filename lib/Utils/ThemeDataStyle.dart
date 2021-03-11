@@ -8,6 +8,8 @@ class ThemeDataStyle {
         primaryColorLight: Colors.white,
         primaryColorDark: Colors.black,
         backgroundColor: isDarkTheme ? Colors.black : Colors.white,
+        accentColor: isDarkTheme ? Colors.white : Colors.black,
+        //indicatorColor: isDarkTheme ? Color(0xff0E1D36) : Color(0xffCBDCF8),
         indicatorColor: isDarkTheme ? Color(0xff0E1D36) : Color(0xffCBDCF8),
         buttonColor: isDarkTheme ? Color(0xff3B3B3B) : Color(0xffF1F5FB),
         hintColor: isDarkTheme ? Colors.white70 : Colors.black26,
@@ -31,10 +33,12 @@ class ThemeDataStyle {
           backgroundColor: isDarkTheme ? Colors.black : Colors.white,
 
         ),
+        dividerColor: isDarkTheme ? Colors.white : Colors.black,
         inputDecorationTheme: InputDecorationTheme(
           border: InputBorder.none,
           focusedBorder: InputBorder.none
         ),
+
         textTheme: TextTheme(
             headline1: TextStyle(
                 fontFamily: "Roboto-Bold",

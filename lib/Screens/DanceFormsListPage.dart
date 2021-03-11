@@ -40,10 +40,10 @@ class DanceFormsListPage extends StatelessWidget {
                       return Card(
                         child: Container(
                           width: MediaQuery.of(context).size.width * 1,
-                          decoration: BoxDecoration(
-                              color: themeProvider.darkTheme
-                                  ? Theme.of(context).primaryColorDark
-                                  : Theme.of(context).primaryColorLight),
+                          // decoration: BoxDecoration(
+                          //     color: themeProvider.darkTheme
+                          //         ? Theme.of(context).primaryColorDark
+                          //         : Theme.of(context).primaryColorLight),
                           alignment: Alignment.center,
                           child: Container(
                             width: MediaQuery.of(context).size.width * 1,
@@ -59,7 +59,7 @@ class DanceFormsListPage extends StatelessWidget {
                                           : Theme.of(context).primaryColorLight,
                                       image: DecorationImage(
                                           image: NetworkImage(
-                                              danceFormsProvider.danceForms[i].imgList.first),fit: BoxFit.contain)),
+                                              danceFormsProvider.danceForms[i].poster),fit: BoxFit.contain)),
                                 ),
                                 Expanded(
                                     child: Container(
@@ -112,7 +112,7 @@ class DanceFormsListPage extends StatelessWidget {
                                               child: ElevatedButton(
                                                 onPressed: (){
                                                   Navigator.push(context, MaterialPageRoute(builder: (_)=> DanceFormDetailsPage(danceFormData: danceFormsProvider.danceForms[i],)));
-                                                }, child: Text("View Details",style: Theme.of(context).textTheme.headline6,),
+                                                }, child: Text("View Details",style: Theme.of(context).textTheme.headline6.copyWith(color: Colors.white),),
                                               ),
                                             ),
                                           ],

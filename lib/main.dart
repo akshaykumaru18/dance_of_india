@@ -1,12 +1,16 @@
-import 'file:///C:/Users/Akshay%20Kumar%20U/AndroidStudioProjects/dance_of_india/lib/Screens/HomePage.dart';
-import 'file:///C:/Users/Akshay%20Kumar%20U/AndroidStudioProjects/dance_of_india/lib/Screens/Splash%20screen.dart';
+
+import 'package:dance_of_india/Screens/HomePage.dart';
+import 'package:dance_of_india/Screens/Splash%20screen.dart';
 import 'package:dance_of_india/Utils/ThemeDataStyle.dart';
 import 'package:dance_of_india/Utils/ThemeProvider.dart';
 import 'package:dance_of_india/logic/DanceFormsProvider.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -48,7 +52,7 @@ class _MyAppState extends State<MyApp> {
               title: 'Dance of India',
               debugShowCheckedModeBanner: false,
               theme: ThemeDataStyle.themeData(themeProvider.darkTheme, context),
-              // home: SplashScreen()
+               //home: SplashScreen()
               home: MyHomePage(title: 'Dance of India'),
             );
           },

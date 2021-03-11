@@ -1,5 +1,5 @@
-import 'file:///C:/Users/Akshay%20Kumar%20U/AndroidStudioProjects/dance_of_india/lib/Screens/HomePage.dart';
 import 'package:dance_of_india/Navigation%20Drawer.dart';
+import 'package:dance_of_india/Screens/HomePage.dart';
 import 'package:dance_of_india/Utils/ThemeProvider.dart';
 import 'package:dance_of_india/main.dart';
 import 'package:flutter/material.dart';
