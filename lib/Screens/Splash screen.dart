@@ -1,4 +1,4 @@
-import 'package:dance_of_india/HomePage.dart';
+import 'file:///C:/Users/Akshay%20Kumar%20U/AndroidStudioProjects/dance_of_india/lib/Screens/HomePage.dart';
 import 'package:dance_of_india/Navigation%20Drawer.dart';
 import 'package:dance_of_india/Utils/ThemeProvider.dart';
 import 'package:dance_of_india/main.dart';
@@ -124,13 +124,13 @@ class SplashScreenAnimationController {
   SplashScreenAnimationController(this.controller)
       : appLogoOpacity = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: controller,
-            curve: Interval(0.0, 0.6, curve: Curves.easeIn))),
+            curve: Interval(0.0, 0.8, curve: Curves.easeInOutQuart))),
         appTitleOpacity = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: controller,
-            curve: Interval(0.2, 0.7, curve: Curves.decelerate))),
+            curve: Interval(0.4, 0.7, curve: Curves.decelerate))),
         appTagLineOpacity = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: controller,
-            curve: Interval(0.3, 0.8, curve: Curves.decelerate)));
+            curve: Interval(0.5, 0.8, curve: Curves.decelerate)));
 
   final AnimationController controller;
   final Animation<double> appLogoOpacity;

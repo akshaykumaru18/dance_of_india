@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
   provider: ^5.0.0
   shared_preferences: ^2.0.3
+  carousel_slider: ^3.0.0
+  #serializer:
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -35,7 +37,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  built_value: ^8.0.2
+  build_runner: ^1.11.5
+  built_value_generator:
   flutter_launcher_icons: ^0.9.0
+
+
+
 
 
 flutter_icons:

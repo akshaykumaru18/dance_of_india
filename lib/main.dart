@@ -1,7 +1,8 @@
-import 'package:dance_of_india/HomePage.dart';
-import 'package:dance_of_india/Splash%20screen.dart';
+import 'file:///C:/Users/Akshay%20Kumar%20U/AndroidStudioProjects/dance_of_india/lib/Screens/HomePage.dart';
+import 'file:///C:/Users/Akshay%20Kumar%20U/AndroidStudioProjects/dance_of_india/lib/Screens/Splash%20screen.dart';
 import 'package:dance_of_india/Utils/ThemeDataStyle.dart';
 import 'package:dance_of_india/Utils/ThemeProvider.dart';
+import 'package:dance_of_india/logic/DanceFormsProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,26 +27,31 @@ class _MyAppState extends State<MyApp> {
   }
 
   void getCurrentAppTheme() async {
-    themeProvider.darkTheme = await themeProvider.darkThemePreference.getTheme();
+    themeProvider.darkTheme =
+        await themeProvider.darkThemePreference.getTheme();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_){
-        return themeProvider;
-      },
-      child: Consumer<ThemeProvider>(
-        builder: (BuildContext context,value, Widget child){
-          return  MaterialApp(
-            title: 'Dance of India',
-            debugShowCheckedModeBanner: false,
-            theme: ThemeDataStyle.themeData(themeProvider.darkTheme, context),
-            //home: SplashScreen()
-            home: MyHomePage(title: 'Dance of India'),
-          );
-        },
-      )
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) {
+            return DanceFormsProvider();
+          }),
+          ChangeNotifierProvider(create: (_) {
+            return themeProvider;
+          })
+        ],
+        child: Consumer<ThemeProvider>(
+          builder: (BuildContext context, value, Widget child) {
+            return MaterialApp(
+              title: 'Dance of India',
+              debugShowCheckedModeBanner: false,
+              theme: ThemeDataStyle.themeData(themeProvider.darkTheme, context),
+              // home: SplashScreen()
+              home: MyHomePage(title: 'Dance of India'),
+            );
+          },
+        ));
   }
 }
