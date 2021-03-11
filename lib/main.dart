@@ -52,8 +52,8 @@ class _MyAppState extends State<MyApp> {
               title: 'Dance of India',
               debugShowCheckedModeBanner: false,
               theme: ThemeDataStyle.themeData(themeProvider.darkTheme, context),
-               //home: SplashScreen()
-              home: MyHomePage(title: 'Dance of India'),
+               home: SplashScreen()
+              //home: MyHomePage(title: 'Dance of India'),
             );
           },
         ));
