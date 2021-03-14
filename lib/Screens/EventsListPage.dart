@@ -1,5 +1,6 @@
 import 'package:dance_of_india/Screens/DanceFormDetailsPage.dart';
 import 'package:dance_of_india/Screens/EventDetailsPage.dart';
+import 'package:dance_of_india/Screens/HostEventPage.dart';
 import 'package:dance_of_india/Utils/ThemeProvider.dart';
 import 'package:dance_of_india/logic/providers/DanceEventsProvider.dart';
 import 'file:///C:/Users/Akshay%20Kumar%20U/AndroidStudioProjects/dance_of_india/lib/logic/providers/DanceFormsProvider.dart';
@@ -259,6 +260,17 @@ class _EventsListPageState extends State<EventsListPage> {
             itemExtent: 330),
         //MediaQuery.of(context).size.height * 0.45
       ],
-    ));
+    ),
+    floatingActionButton: Container(
+      width: MediaQuery.of(context).size.width * 0.25,
+      height: MediaQuery.of(context).size.height * 0.06,
+      child: ElevatedButton(
+        child: Text("Host",style: Theme.of(context).textTheme.headline1.copyWith(color: Colors.white),),
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (_)=> HostEventPage()));
+        },
+      ),
+    ),
+    );
   }
 }
