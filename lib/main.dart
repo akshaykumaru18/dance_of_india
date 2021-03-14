@@ -3,7 +3,8 @@ import 'package:dance_of_india/Screens/HomePage.dart';
 import 'package:dance_of_india/Screens/Splash%20screen.dart';
 import 'package:dance_of_india/Utils/ThemeDataStyle.dart';
 import 'package:dance_of_india/Utils/ThemeProvider.dart';
-import 'package:dance_of_india/logic/DanceFormsProvider.dart';
+import 'package:dance_of_india/logic/providers/DanceEventsProvider.dart';
+import 'file:///C:/Users/Akshay%20Kumar%20U/AndroidStudioProjects/dance_of_india/lib/logic/providers/DanceFormsProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +37,12 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    DanceEventsProvider().dispose();
+    super.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
@@ -44,6 +51,9 @@ class _MyAppState extends State<MyApp> {
           }),
           ChangeNotifierProvider(create: (_) {
             return themeProvider;
+          }),
+          ChangeNotifierProvider(create: (_) {
+            return DanceEventsProvider();
           })
         ],
         child: Consumer<ThemeProvider>(
@@ -52,8 +62,8 @@ class _MyAppState extends State<MyApp> {
               title: 'Dance of India',
               debugShowCheckedModeBanner: false,
               theme: ThemeDataStyle.themeData(themeProvider.darkTheme, context),
-               home: SplashScreen()
-              //home: MyHomePage(title: 'Dance of India'),
+               //home: SplashScreen()
+              home: MainPage(),
             );
           },
         ));

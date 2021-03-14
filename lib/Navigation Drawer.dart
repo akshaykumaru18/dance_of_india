@@ -14,16 +14,26 @@ class NavigationDrawer extends StatelessWidget {
             child: ListTile(
               title: Center(
                   child: Text(
-                themeNotifier.darkTheme ?"Dark Mode On" : "Light Mode On",
+                themeNotifier.darkTheme ? "Dark Mode On" : "Light Mode On",
                 style: Theme.of(context).textTheme.headline1,
               )),
-              trailing: Switch(
-                  activeColor: Colors.white,
-                  inactiveThumbColor: Colors.indigo,
-                  value: themeNotifier.darkTheme,
-                  onChanged: (bool value) {
-                    themeNotifier.darkTheme = value;
-                  }),
+              trailing: Container(
+               // width: MediaQuery.of(context).size.width * 0.2,
+                height: MediaQuery.of(context).size.height * 0.05,
+                child: Switch(
+                  splashRadius: 5,
+                    activeTrackColor: Colors.white,
+                    inactiveTrackColor: Colors.yellow,
+                    activeColor: Colors.transparent,
+                    //inactiveThumbColor: Colors.indigo,
+                    value: themeNotifier.darkTheme,
+                    activeThumbImage: AssetImage("assets/icons/moon.png"),
+                    inactiveThumbImage: AssetImage("assets/icons/sun.png"),
+                    onChanged: (bool value) {
+                      themeNotifier.darkTheme = value;
+                    }),
+              ),
+      
             ),
           ),
         ],

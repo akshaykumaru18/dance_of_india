@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
     splashScreenAnimation.controller.addListener(() {
       if(splashScreenAnimation.controller.isCompleted){
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (_)=> MyHomePage(title: "Dance of India",)
+          builder: (_)=> MainPage()
         ));
       }
     });

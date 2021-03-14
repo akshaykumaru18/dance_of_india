@@ -3,23 +3,74 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dance_of_india/Navigation%20Drawer.dart';
 import 'package:dance_of_india/Screens/DanceFormDetailsPage.dart';
 import 'package:dance_of_india/Screens/DanceFormsListPage.dart';
+import 'package:dance_of_india/Screens/EventsListPage.dart';
 import 'package:dance_of_india/Utils/ThemeProvider.dart';
 
-import 'package:dance_of_india/logic/DanceFormsProvider.dart';
+import 'file:///C:/Users/Akshay%20Kumar%20U/AndroidStudioProjects/dance_of_india/lib/logic/providers/DanceFormsProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
 
-  final String title;
+class MainPage extends StatefulWidget {
+
+  static  List<Widget> tabs = <Widget>[
+    HomePageTab(),
+    EventsListPage()
+
+  ];
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainPageState extends State<MainPage> {
+  int selectedTab = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+           'Dance Of India',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+        centerTitle: true,
+      ),
+      drawer: NavigationDrawer(),
+      body: MainPage.tabs.elementAt(selectedTab),
+      bottomNavigationBar:  BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore,size: 30,),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.event,size: 30,),
+            label: 'Find Events',
+          ),
+        ],
+        currentIndex: selectedTab,
+        selectedItemColor: Colors.red,
+        onTap: (i) {
+          setState(() {
+            selectedTab = i;
+          });
+        },
+      ),
+    );
+  }
+}
+
+
+class HomePageTab extends StatefulWidget {
+
+
+  @override
+  _HomePageTabState createState() => _HomePageTabState();
+}
+
+class _HomePageTabState extends State<HomePageTab> {
   int _current = 0;
 
   @override
@@ -27,14 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final danceFormsProvider = Provider.of<DanceFormsProvider>(context);
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            widget.title,
-            style: Theme.of(context).textTheme.headline1,
-          ),
-          centerTitle: true,
-        ),
-        drawer: NavigationDrawer(),
+
         body: danceFormsProvider.danceFormProviderState ==
                 DanceFormProviderState.Loading
             ? Center(
@@ -82,19 +126,48 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     left: 1,
                                                     right: 1,
                                                     child: Padding(
-                                                      padding: const EdgeInsets.all(8.0),
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
                                                       child: Container(
-                                                        width: MediaQuery.of(context).size.width * 0.5,
-                                                        height: MediaQuery.of(context).size.height * 0.06,
+                                                        // width: MediaQuery.of(
+                                                        //             context)
+                                                        //         .size
+                                                        //         .width *
+                                                        //     0.5,
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            0.06,
                                                         decoration: BoxDecoration(
-                                                            shape: BoxShape.rectangle, // BoxShape.circle or BoxShape.retangle
+                                                            shape: BoxShape
+                                                                .rectangle,
+                                                            // BoxShape.circle or BoxShape.retangle
                                                             //color: const Color(0xFF66BB6A),
-                                                            boxShadow: [BoxShadow(
-                                                              color: Colors.black54,
-                                                              blurRadius: 7.0,
-                                                            ),]
-                                                        ),
-                                                        child: Center(child: Text(item.bannerText,style: Theme.of(context).textTheme.headline1.copyWith(color: Colors.white,fontFamily: "Redressed",letterSpacing: 2,fontSize: 30),)),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                color: Colors
+                                                                    .black54,
+                                                                blurRadius: 7.0,
+                                                              ),
+                                                            ]),
+                                                        child: Center(
+                                                            child: Text(
+                                                          item.bannerText,
+                                                          style: Theme.of(
+                                                                  context)
+                                                              .textTheme
+                                                              .headline1
+                                                              .copyWith(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontFamily:
+                                                                      "Redressed",
+                                                                  letterSpacing:
+                                                                      2,
+                                                                  fontSize: 30),
+                                                        )),
                                                       ),
                                                     ))
                                               ],
@@ -315,7 +388,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         );
                       }, childCount: danceFormsProvider.danceForms.length),
-                      itemExtent: MediaQuery.of(context).size.height * 0.3),
+                      itemExtent: 250),
                   SliverToBoxAdapter(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(

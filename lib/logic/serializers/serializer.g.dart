@@ -7,6 +7,7 @@ part of serializers;
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(DanceEventModal.serializer)
       ..add(DanceFormModal.serializer)
       ..add(HomePageBannerModal.serializer)
       ..addBuilderFactory(

@@ -45,7 +45,7 @@ class DanceFormsProvider extends ChangeNotifier {
         });
       }
     }).catchError((e)=> print('Error loading /Homepage-Banners $e'));
-
+    notifyListeners();
     //danceFormProviderState = DanceFormProviderState.Ready;
   }
   void loadDanceForms() async {

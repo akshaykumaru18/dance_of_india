@@ -2,7 +2,7 @@ import 'package:dance_of_india/Navigation%20Drawer.dart';
 import 'package:dance_of_india/Screens/DanceFormDetailsPage.dart';
 import 'package:dance_of_india/Utils/ThemeProvider.dart';
 import 'package:dance_of_india/delegates/SearchDelegate.dart';
-import 'package:dance_of_india/logic/DanceFormsProvider.dart';
+import 'file:///C:/Users/Akshay%20Kumar%20U/AndroidStudioProjects/dance_of_india/lib/logic/providers/DanceFormsProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -125,7 +125,7 @@ class DanceFormsListPage extends StatelessWidget {
                         ),
                       );
                     }, childCount: danceFormsProvider.danceForms.length),
-                itemExtent: MediaQuery.of(context).size.height * 0.3),
+                itemExtent: 220),
 
           ],
         ));

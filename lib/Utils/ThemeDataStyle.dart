@@ -44,7 +44,7 @@ class ThemeDataStyle {
                 fontFamily: "Roboto-Bold",
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
-                color: isDarkTheme ? Colors.white : Colors.black),
+                color: isDarkTheme ? Colors.white : Colors.black,letterSpacing: 1),
             headline3: TextStyle(
                 fontFamily: "Roboto-Medium",
                 fontSize: 20,
